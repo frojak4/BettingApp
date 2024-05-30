@@ -25,6 +25,15 @@ namespace BettingApp
             Startnumber = 0;
             Random random = new Random();
             int randomNumber = random.Next(Startnumber, _maxcount);
+
+            while (Startnumber <= randomNumber)
+            {
+                Console.Clear();
+                Console.WriteLine($"{Startnumber} / {_chance}");
+                Startnumber++;
+                Thread.Sleep(200);
+
+            }
         }
     }
 }
