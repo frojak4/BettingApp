@@ -22,7 +22,7 @@ namespace BettingApp
             {
                 Console.Clear();
                 Console.WriteLine("Welcome to BettingApp, what would you like to do?");
-                Console.WriteLine($"Total money:{Money}");
+                Console.WriteLine($"Total money: {Money}$");
                 Console.WriteLine("1. Place bet");
                 Console.WriteLine("2. Create bet");
                 string userInput = Console.ReadLine();
@@ -33,7 +33,10 @@ namespace BettingApp
                         PlaceBet();
                         break;
                     case "2":
-                        
+                        CreateBet();
+                        break;
+                    default: 
+                        Console.WriteLine("Invalid input");
                         break;
                 }
             }
@@ -50,7 +53,7 @@ namespace BettingApp
             double betAmount = 0;
             Console.Clear();
             Console.WriteLine("What bet would you like to do?");
-            Console.WriteLine($"Total money:{Money}");
+            Console.WriteLine($"Total money: {Money}$");
 
             for (int i = 0; i < BettingList.Count; i++)
             {
@@ -101,6 +104,28 @@ namespace BettingApp
                 Console.ReadKey(true);
             }
 
+        }
+
+        public void CreateBet()
+        {
+            Console.Clear();
+            Console.WriteLine("What's the name of your bet?");
+            string name = Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("What's the odds?");
+            string odds = Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("What's the max count?");
+            string maxCount = Console.ReadLine();
+            Console.Clear();
+
+            int oddsint = Convert.ToInt32(odds);
+            int maxcountint = Convert.ToInt32(maxCount);
+
+            BettingList.Add(new Bet(name, oddsint, maxcountint));
+
+            Console.WriteLine("Bet successfully added!");
+            Console.ReadKey(true);
         }
     }
 }
