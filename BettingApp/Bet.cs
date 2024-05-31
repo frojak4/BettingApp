@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace BettingApp
         private int _chance;
         private int _maxcount;
         public int Startnumber;
+        
 
         public Bet(string name, int chance, int maxcount)
         {
@@ -19,8 +21,8 @@ namespace BettingApp
             _chance = chance;
             _maxcount = maxcount;
         }
-
-        public void Go()
+        
+        public double Go()
         {
             Startnumber = 0;
             Random random = new Random();
@@ -31,9 +33,34 @@ namespace BettingApp
                 Console.Clear();
                 Console.WriteLine($"{Startnumber} / {_chance}");
                 Startnumber++;
-                Thread.Sleep(200);
+                Thread.Sleep(100);
+            }
+
+            if (Startnumber <= _chance)
+            {
+                double odds = _maxcount / _chance;
+                return odds;
 
             }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public string getName()
+        {
+            return _name;
+        }
+
+        public int getchance()
+        {
+            return _chance;
+        }
+
+        public int getMaxcount()
+        {
+            return _maxcount;
         }
     }
 }
