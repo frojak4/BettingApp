@@ -22,7 +22,7 @@ namespace BettingApp
             _maxcount = maxcount;
         }
         
-        public double Go()
+        public decimal Go()
         {
             Startnumber = 0;
             Random random = new Random();
@@ -38,7 +38,7 @@ namespace BettingApp
 
             if (Startnumber <= _chance)
             {
-                double odds = _maxcount / _chance;
+                decimal odds = (decimal) _maxcount / _chance;
                 return odds;
 
             }

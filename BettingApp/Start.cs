@@ -15,7 +15,7 @@ namespace BettingApp
             new Bet("The Safe Bet", 80, 100),
             new Bet("Coin Flip", 1, 2)
     };
-        public double Money { get; set; } = 1000;
+        public decimal Money { get; set; } = 1000;
         public void Run()
         {
             while (true)
@@ -50,7 +50,7 @@ namespace BettingApp
         public void PlaceBet()
         {
             bool validBet = false;
-            double betAmount = 0;
+            decimal betAmount = 0;
             Console.Clear();
             Console.WriteLine("What bet would you like to do?");
             Console.WriteLine($"Total money: {Money}$");
@@ -86,7 +86,7 @@ namespace BettingApp
                 Console.Clear();
             }
 
-            double odds = currentBet.Go();
+            decimal odds = currentBet.Go();
 
             if (odds != 0)
             {
